@@ -1,7 +1,5 @@
-
-#ifndef FUNCOES_H_INCLUDE
+#ifndef FUNCOES_H_INCLUDED
 #define FUNCOES_H_INCLUDED
-
 void mostraLista (void);
 void mostraListaRecursiva(int i);
 float calculaLucro(float n);
