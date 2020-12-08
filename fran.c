@@ -1,9 +1,9 @@
+
 #include <stdio.h>
 #include <stdlib.h>
 #include "fran.h"
 
 void mostraLista(void){
-	
 	printf("LISTA DE RECEITAS, DIGITE O NUMERO QUE DESEJA:\n\n");
 	printf("1-SUSPIRO MERENGUE\n");
 	printf("2-MASSA CASEIRA FRESCA\n");
@@ -13,43 +13,67 @@ void mostraLista(void){
 	printf("0-ENCERRA O PROGRAMA\n\n");
 }
 
+void mostraListaRecursiva(int i){
+	int nReceita;
+	printf("LISTA DE RECEITAS, DIGITE O NUMERO QUE DESEJA:\n\n");
+	printf("1-SUSPIRO MERENGUE\n");
+	printf("2-MASSA CASEIRA FRESCA\n");
+	printf("3-MOLHO PESTO\n");
+	printf("4-FAROFA DE PINHAO\n");
+	printf("5-PEIXE ASSADO COM LIMAO E ALECRIM\n");
+	printf("0-ENCERRA O PROGRAMA\n\n");
+	if(i==0){
+		scanf("%d", &nReceita);
+		if(confirmaEscolha(nReceita)=='s'){
+			mostraReceita(nReceita);
+			i++;
+		}else{
+			mostraListaRecursiva(0);
+		
+		}
+	}
+}
+
 float calculaLucro(float n){
-	return n*1.3;
+	float res;
+	float margemLucro=0.30;
+	//printf("\nQual a porcentagem da sua margem de lucro? Digite em decimal Exemplo: 40% = 0.40");
+	//scanf("%.2f", margemLucro);
+	res = n*(1+margemLucro);
+	return res;
 }
 
 char confirmaEscolha(nReceita){
-	
 	char res;
-	
 	switch(nReceita){
 		case 1:
 			printf("#####SUSPIRO MERENGUE#####\n\nDescricao:\n");
 			printf("Deseja visualizar esta receita?s/n\n");
-			scanf(" %c\n\n", &res);
+			scanf(" %c", &res);
 			return res;
 			break;
 		case 2:
 			printf("#####MASSA CASEIRA FRESCA#####\n\nDescricao:\n");
 			printf("Deseja visualizar esta receita?s/n\n");
-			scanf(" %c\n\n", &res);
+			scanf(" %c", &res);
 			return res;
 			break;
 		case 3:
 			printf("#####MOLHO PESTO#####\n\nDescricao:\n");
 			printf("Deseja visualizar esta receita?s/n\n");
-			scanf(" %c\n\n", &res);
+			scanf(" %c", &res);
 			return res;
 			break;
 		case 4:
 			printf("#####FAROFA DE PINHAO#####\n\nDescricao:\n");
 			printf("Deseja visualizar esta receita?s/n\n");
-			scanf(" %c\n\n", &res);
+			scanf(" %c", &res);
 			return res;
 			break;
 		case 5:
 			printf("#####PEIXE ASSADO COM LIMAO E ALECRIM#####\n\nDescricao:\n");
 			printf("Deseja visualizar esta receita?s/n\n");
-			scanf(" %c\n\n", &res);
+			scanf(" %c", &res);
 			return res;
 			break;
 		case 0:
@@ -57,56 +81,47 @@ char confirmaEscolha(nReceita){
 	}
 }
 
-int mostraRend(int n, int *ptr_vet){
-	int rend = *(ptr_vet+n);
-	return rend;
-}
-
-float mostraLucro(float n, int *ptr_vet, int i){
+float mostraLucro(float n, int rend){
 	float lucro;
-	int r;
-	r = *(ptr_vet+i);
-	lucro = calculaLucro(n);
-	lucro = lucro/r;
+	lucro = n/rend;
 	return lucro;
 }
 
 void mostraReceita(int n){
-	int *ptr_vet, i = n - 1;;
+	int  i = n - 1;;
 	int vet_rend[5]={2,2,3,4,5};
-	ptr_vet = vet_rend;
 	float vet_custo[5]={9.00,10.00,5.00,4.00,20.00};
 	
 	switch(n){
 		case 1:
-			printf("#####SUSPIRO MERENGUE#####\n\n2 claras de ovos\n40 gr de aÁ˙car confeiteiro\n1 lim„o\n\nPasso a passo:\nBata as claras em neve junto com o aÁ˙car, e aos poucos acrescente o suco de lim„o.\nEsse processo levar· em torno de 6 a 8 minutos,\nlogo obter· um creme brilhoso e textura firme, que n„o escorra na vasilha.\nAqueÁa o forno a 140∫C e coloque o creme em um saco de confeiteiro com um bico comum.\nUnte uma forma com manteiga e coloque e comece a colocar alguns montinhos de merengue.\nLeve a assar no forno a 140∫C durante 15-20 minutos.");
-			printf("\n\nRendimento: %d pessoas", mostraRend(i, ptr_vet)); 
+			printf("#####SUSPIRO MERENGUE#####\n\n2 claras de ovos\n40 gr de a√ß√∫car confeiteiro\n1 lim√£o\n\nPasso a passo:\nBata as claras em neve junto com o a√ß√∫car, e aos poucos acrescente o suco de lim√£o.\nEsse processo levar√° em torno de 6 a 8 minutos,\nlogo obter√° um creme brilhoso e textura firme, que n√£o escorra na vasilha.\nAque√ßa o forno a 140¬∫C e coloque o creme em um saco de confeiteiro com um bico comum.\nUnte uma forma com manteiga e coloque e comece a colocar alguns montinhos de merengue.\nLeve a assar no forno a 140¬∫C durante 15-20 minutos.");
+			printf("\n\nRendimento: %d pessoas", vet_rend[i]);
 			printf("\nCusto medio: %.2f reais", vet_custo[i]);
-			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(vet_custo[i], ptr_vet, i));
+			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			break;
 		case 2:
-			printf("#####MASSA CASEIRA FRESCA#####\n\n3 xÌcaras (ch·) de farinha de trigo (cerca de 400 g)\n4 ovos\n3 colheres (ch·) de sal\n\nPasso a passo:\nNuma tigela misture a farinha de trigo com o sal e abra um buraco no centro e adicione os ovos.\nCom um garfo, mexa apenas os ovos para misturar as gemas com as claras.\nAos poucos, misture os ovos com a farinha.  Assim que a farinha incorporar os ovos, misture e amasse com a m„o atÈ formar uma bolota.\nAmasse bem atÈ ficar lisa. Embale a massa com filme e deixe descansar em temperatura ambiente por 30 minutos.\nApÛs o descaso, abra-a e deixa-a bem fina, pois estar· pronta para cortar como desejar e ser cozida em ·gua fervente. ");
-			printf("\n\nRendimento: %d pessoas", mostraRend(i, ptr_vet));
+			printf("#####MASSA CASEIRA FRESCA#####\n\n3 x√≠caras (ch√°) de farinha de trigo (cerca de 400 g)\n4 ovos\n3 colheres (ch√°) de sal\n\nPasso a passo:\nNuma tigela misture a farinha de trigo com o sal e abra um buraco no centro e adicione os ovos.\nCom um garfo, mexa apenas os ovos para misturar as gemas com as claras.\nAos poucos, misture os ovos com a farinha.  Assim que a farinha incorporar os ovos, misture e amasse com a m√£o at√© formar uma bolota.\nAmasse bem at√© ficar lisa. Embale a massa com filme e deixe descansar em temperatura ambiente por 30 minutos.\nAp√≥s o descaso, abra-a e deixa-a bem fina, pois estar√° pronta para cortar como desejar e ser cozida em √°gua fervente. ");
+			printf("\n\nRendimento: %d pessoas", vet_rend[i]);
 			printf("\nCusto medio: %.2f reais", vet_custo[i]);
-			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(vet_custo[i], ptr_vet, i));
+			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			break;
 		case 3:
-			printf("#####MOLHO PESTO#####\n\n4 dentes de alho\n1 colher (ch·) de sal\n1 xÌcara (ch·) de folhas de manjeric„o\n3 colheres (ch·) de nozes\n100 g de queijo parmes„o ralado\n1/2 xÌcara (ch·) de azeite\n\nPasso a passo:\nTriture o alho e as nozes no processador, acrescente o sal. Pique as folhas de manjeric„o e misture tudo numa tigela.\nAcrescente o queijo e o azeite na tigela e misture todos os ingredientes. ");
-			printf("\n\nRendimento: %d pessoas", mostraRend(i, ptr_vet));
+			printf("#####MOLHO PESTO#####\n\n4 dentes de alho\n1 colher (ch√°) de sal\n1 x√≠cara (ch√°) de folhas de manjeric√£o\n3 colheres (ch√°) de nozes\n100 g de queijo parmes√£o ralado\n1/2 x√≠cara (ch√°) de azeite\n\nPasso a passo:\nTriture o alho e as nozes no processador, acrescente o sal. Pique as folhas de manjeric√£o e misture tudo numa tigela.\nAcrescente o queijo e o azeite na tigela e misture todos os ingredientes. ");
+			printf("\n\nRendimento: %d pessoas", vet_rend[i]);
 			printf("\nCusto medio: %.2f reais", vet_custo[i]);
-			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(vet_custo[i], ptr_vet, i));
+			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			break;
 		case 4:
-			printf("#####FAROFA DE PINH√O#####\n\n1 kg de pinh„o\n1 cebola picada\n1 pacote de farinha de mandioca\nΩ xÌcara de azeite\n1 colher (ch·) de sal\n1 colher (ch·) de pimenta do reino\n\nPasso a passo:\nPegue o pinh„o j· cozido e descascado pique-o. Ligue o fogo baixo, pegue uma frigideira e coloque Ω de azeite, coloque a cebola picada e o sal.\nQuando a cebola reduzir a porÁ„o acrescente o pinh„o picado e refogue.\nAcrescente a pimento do reino e v· acrescentando aos poucos a farinha de mandioca atÈ chegar ao ponto de farofa refogada. ");
-			printf("\n\nRendimento: %d pessoas", mostraRend(i, ptr_vet));
+			printf("#####FAROFA DE PINH√ÉO#####\n\n1 kg de pinh√£o\n1 cebola picada\n1 pacote de farinha de mandioca\n¬Ω x√≠cara de azeite\n1 colher (ch√°) de sal\n1 colher (ch√°) de pimenta do reino\n\nPasso a passo:\nPegue o pinh√£o j√° cozido e descascado pique-o. Ligue o fogo baixo, pegue uma frigideira e coloque ¬Ω de azeite, coloque a cebola picada e o sal.\nQuando a cebola reduzir a por√ß√£o acrescente o pinh√£o picado e refogue.\nAcrescente a pimento do reino e v√° acrescentando aos poucos a farinha de mandioca at√© chegar ao ponto de farofa refogada. ");
+			printf("\n\nRendimento: %d pessoas", vet_rend[i]);
 			printf("\nCusto medio: %.2f reais", vet_custo[i]);
-			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(vet_custo[i], ptr_vet, i));
+			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			break;
 		case 5:
-			printf("#####PEIXE ASSADO COM LIMAO E ALECRIM#####\n\n1 kg de peixe tilapia\n2 dentes de alho\n2 limıes\nAzeite de oliva\nSal a gosto\n2 colheres (sopa) alecrim\nPapel alumÌnio\n\nPasso a passo:\nNuma assadeira com papel alumÌnio, coloque o peixe e azeite de oliva, pique o alho e coloque por cima do peixe e uma pitada de sal.\nDeixe assar por 15 minutos em temperatura 200C.\nRetire do forno o coloque o suco de 2 limıes e as 2 colheres de alecrim e leve ao forno atÈ comeÁar a dourar o peixe.\nApÛs retire o excesso de alecrim e est· pronto.");
-			printf("\n\nRendimento: %d pessoas", mostraRend(i, ptr_vet));
+			printf("#####PEIXE ASSADO COM LIMAO E ALECRIM#####\n\n1 kg de peixe tilapia\n2 dentes de alho\n2 lim√µes\nAzeite de oliva\nSal a gosto\n2 colheres (sopa) alecrim\nPapel alum√≠nio\n\nPasso a passo:\nNuma assadeira com papel alum√≠nio, coloque o peixe e azeite de oliva, pique o alho e coloque por cima do peixe e uma pitada de sal.\nDeixe assar por 15 minutos em temperatura 200C.\nRetire do forno o coloque o suco de 2 lim√µes e as 2 colheres de alecrim e leve ao forno at√© come√ßar a dourar o peixe.\nAp√≥s retire o excesso de alecrim e est√° pronto.");
+			printf("\n\nRendimento: %d pessoas", vet_rend[i]);
 			printf("\nCusto medio: %.2f reais", vet_custo[i]);
-			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(vet_custo[i], ptr_vet, i));
+			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			break;
 	}
 }
