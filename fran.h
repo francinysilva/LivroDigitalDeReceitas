@@ -1,11 +1,12 @@
-#ifndef FUNCOES_H_INCLUDED
+
+#ifndef FUNCOES_H_INCLUDE
 #define FUNCOES_H_INCLUDED
 
 void mostraLista (void);
+void mostraListaRecursiva(int i);
 float calculaLucro(float n);
 char confirmaEscolha (int n);
 void mostraReceita(int n);
-int mostraRend(int n, int *ptr_vet);
-float mostraLucro(float n, int *ptr_vet, int i);
+float mostraLucro(float n, int rend);
 
 #endif /* FUNCOES_H_INCLUDED */
