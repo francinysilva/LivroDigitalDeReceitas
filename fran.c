@@ -113,12 +113,12 @@ char confirmaEscolha(nReceita){
 }
 
 void alteraRendimento(int n, char *str_rend, int *ptr_vet){
-	if(strncmp(*(str_rend),"metade",6)==0){
-		quantPorRendimento(1,n,*ptr_vet);
-	}else if(strncmp(*(str_rend),"dobro",5)==0){
-		quantPorRendimento(2,n,*ptr_vet);
-	}else if(strncmp(*(str_rend),"quadruplo",9)==0){
-		quantPorRendimento(3,n,*ptr_vet);
+	if(strcmp(str_rend,"metade")){
+		quantPorRendimento(1,n,ptr_vet);
+	}else if(strcmp(str_rend,"dobro")){
+		quantPorRendimento(2,n,ptr_vet);
+	}else if(strcmp(str_rend,"quadruplo")){
+		quantPorRendimento(3,n,ptr_vet);
 	}else{
 		exit(0);
 	}
@@ -196,7 +196,7 @@ void mostraReceita(int n, int *ptr_vet){
 			
 			printf("Quer mudar o rendimento? Digite: metade, dobro, quadruplo ou sair\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend,*ptr_vet);
+			alteraRendimento(n, str_rend,ptr_vet);
 			
 			break;
 		case 2:
@@ -207,7 +207,7 @@ void mostraReceita(int n, int *ptr_vet){
 			
 			printf("Quer mudar o rendimento? Digite: metade, dobro, quadruplo ou sair\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend,*ptr_vet);
+			alteraRendimento(n, str_rend,ptr_vet);
 			
 			break;
 		case 3:
@@ -218,7 +218,7 @@ void mostraReceita(int n, int *ptr_vet){
 			
 			printf("Quer mudar o rendimento? Digite: metade, dobro, quadruplo ou sair\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend,*ptr_vet);
+			alteraRendimento(n, str_rend,ptr_vet);
 			
 			break;
 		case 4:
@@ -229,7 +229,7 @@ void mostraReceita(int n, int *ptr_vet){
 			
 			printf("Quer mudar o rendimento? Digite: metade, dobro, quadruplo ou sair\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend,*ptr_vet);
+			alteraRendimento(n, str_rend,ptr_vet);
 			
 			break;
 		case 5:
@@ -240,7 +240,7 @@ void mostraReceita(int n, int *ptr_vet){
 			
 			printf("Quer mudar o rendimento? Digite: metade, dobro, quadruplo ou sair\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend,*ptr_vet);
+			alteraRendimento(n, str_rend,ptr_vet);
 			
 			break;
 	}
