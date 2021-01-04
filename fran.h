@@ -7,7 +7,7 @@ void mostraReceita(int n, int *ptr_vet, char *ptr_receita, char *ptr_passos);//r
 float mostraLucro(float n, int rend);//faz o cálculo do valor de custo sobre o rendimento da receita
 float calculaLucro(float n);//coloca a porcentagem de lucro no valor base de custo da receita
 void alteraRendimento(int n, char *str_rend, int *ptr_vet);//compara a leitura de string do usuário pra saber se ele quer alterar o rendimento da receita e chama a quantPorRendimento conforme a necessidade
-void quantPorRendimento(int rend, int n, int *ptr_quant);//recebe o código da alteraRendimento e o código da receita, e altera as quantidades da receita conforme p esperado
+void quantPorRendimento(int rend, int n, int *ptr_quant);//recebe o código da alteraRendimento e o código da receita, e altera as quantidades da receita conforme o esperado
 void alteraRendimentoRec(int n, char *str_rend, int *ptr_vet, int aux);
 
 #endif	
