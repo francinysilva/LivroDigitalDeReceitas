@@ -114,7 +114,7 @@ void quantPorRendimento(int rend, int n, int *ptr_vet){
 	else if(rend==2){
 		switch(n){
 		case 1:
-			printf("%d claras de ovos\n%d g de acucar confeiteiro\n%d limao", *(ptr_vet+0)*2, *(ptr_vet+1*2), *(ptr_vet+2)*2);
+			printf("%d claras de ovos\n%d g de acucar confeiteiro\n%d limao", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2);
 			break;
 		case 2:
 			printf("%d xicaras (cha) de farinha de trigo (cerca de %d g)\n%d ovos\n%d colheres (cha) de sal", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2, *(ptr_vet+3)*2);
