@@ -26,7 +26,7 @@ float calculaLucro(float n){
 	return res;
 }
 
-char confirmaEscolha(nReceita){
+char confirmaEscolha(int nReceita){
 	char res;
 	switch(nReceita){
 		case 1:
