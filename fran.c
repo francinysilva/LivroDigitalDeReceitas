@@ -143,7 +143,7 @@ void quantPorRendimento(int rend, int n, int *ptr_vet){
 void mostraReceita(int n, int *ptr_vet, char *ptr_receita, char *ptr_passos){
 	
 	FILE *txt;
-	txt = fopen("C:/Users/Leonardo/Desktop/Fran/Fran.txt", "w");
+	txt = fopen("C:/Users/ /Fran.txt", "w");
 	if (txt == NULL)
 	{
 	   printf("Problemas na CRIACAO do arquivo\n");
