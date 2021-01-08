@@ -23,7 +23,7 @@ int main(){
 	while(i==0){	
 		mostraLista();
 		scanf("%d", &nReceita);
-		if(confirmaEscolha(nReceita)=='s'){
+		if(confirmaEscolhaRec(nReceita)=='s'){
 			switch(nReceita){
 				case 1:
 					mostraReceita(nReceita, vetSuspiro, listaReceitas[0], passos[0]);
