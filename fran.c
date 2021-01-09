@@ -91,38 +91,50 @@ char confirmaEscolhaRec(int nReceita){
 }
 
 
-void alteraRendimento(int n, char *str_rend, int *ptr_vet){
+void alteraRendimento(int n, char *str_rend, int *ptr_vet, int vRend, float vCusto){
 	if(strcmp(str_rend,"metade")){
-		quantPorRendimento(2,n,ptr_vet);
+		quantPorRendimento(2,n,ptr_vet,vRend,vCusto);
 	}else if(strcmp(str_rend,"dobro")){
-		quantPorRendimento(1,n,ptr_vet);
+		quantPorRendimento(1,n,ptr_vet,vRend,vCusto);
 	}
 }
 
-void quantPorRendimento(int rend, int n, int *ptr_vet){
+void quantPorRendimento(int rend, int n, int *ptr_vet, int vRend, float vCusto){
 	if(rend==1){
 		switch(n){
 		case 1:
-			printf("%d claras de ovos\n%d g de acucar confeiteiro\n%d limao", *(ptr_vet+0)-1, *(ptr_vet+1)/2, *(ptr_vet+2));
+			printf("\n%d claras de ovos\n%d g de acucar confeiteiro\n%d limao", *(ptr_vet+0)-1, *(ptr_vet+1)/2, *(ptr_vet+2));
+			printf("\n\nRendimento: Rende %d unidades", vRend/2);
+			printf("\nCusto medio: %.2f reais", vCusto/2);
 			break;
 		case 2:
-			printf("%d xicaras (cha) de farinha de trigo (cerca de %d g)\n%d ovos\n%d colheres (cha) de sal", *(ptr_vet+0)-2, *(ptr_vet+1)/2, *(ptr_vet+2)/2, *(ptr_vet+3)-1);
+			printf("\n%d xicaras (cha) de farinha de trigo (cerca de %d g)\n%d ovos\n%d colheres (cha) de sal", *(ptr_vet+0)-2, *(ptr_vet+1)/2, *(ptr_vet+2)/2, *(ptr_vet+3)-1);
+			printf("\n\nRendimento: Rende %d unidades", vRend/2);
+			printf("\nCusto medio: %.2f reais", vCusto/2);
 			break;
 		case 3:
-			printf("%d dentes de alho\n%d colher (cha) de sal\n%d xicara (cha) de folhas de manjericao\n%d colheres (cha) de nozes\n%d g de queijo parmesao ralado\n%d xicara (cha) de azeite", *(ptr_vet+0)/2, *(ptr_vet+1), *(ptr_vet+2), *(ptr_vet+3), *(ptr_vet+4)/2, *(ptr_vet+5), *(ptr_vet+6)*2);
+			printf("\n%d dentes de alho\n%d colher (cha) de sal\n%d xicara (cha) de folhas de manjericao\n%d colheres (cha) de nozes\n%d g de queijo parmesao ralado\n%d xicara (cha) de azeite", *(ptr_vet+0)/2, *(ptr_vet+1), *(ptr_vet+2), *(ptr_vet+3), *(ptr_vet+4)/2, *(ptr_vet+5), *(ptr_vet+6)*2);
+			printf("\n\nRendimento: Rende %d unidades", vRend/2);
+			printf("\nCusto medio: %.2f reais", vCusto/2);
 			break;
 		}
 	}
 	else if(rend==2){
 		switch(n){
 		case 1:
-			printf("%d claras de ovos\n%d g de acucar confeiteiro\n%d limao", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2);
+			printf("\n%d claras de ovos\n%d g de acucar confeiteiro\n%d limao", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2);
+			printf("\n\nRendimento: Rende %d unidades", vRend*2);
+			printf("\nCusto medio: %.2f reais", vCusto*2);
 			break;
 		case 2:
-			printf("%d xicaras (cha) de farinha de trigo (cerca de %d g)\n%d ovos\n%d colheres (cha) de sal", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2, *(ptr_vet+3)*2);
+			printf("\n%d xicaras (cha) de farinha de trigo (cerca de %d g)\n%d ovos\n%d colheres (cha) de sal", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2, *(ptr_vet+3)*2);
+			printf("\n\nRendimento: Rende %d unidades", vRend*2);
+			printf("\nCusto medio: %.2f reais", vCusto*2);
 			break;
 		case 3:
-			printf("%d dentes de alho\n%d colher (cha) de sal\n%d xicara (cha) de folhas de manjericao\n%d colheres (cha) de nozes\n%d g de queijo parmesao ralado\n%d xicara (cha) de azeite", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2, *(ptr_vet+3)*2, *(ptr_vet+4)*2, *(ptr_vet+5));
+			printf("\n%d dentes de alho\n%d colher (cha) de sal\n%d xicara (cha) de folhas de manjericao\n%d colheres (cha) de nozes\n%d g de queijo parmesao ralado\n%d xicara (cha) de azeite", *(ptr_vet+0)*2, *(ptr_vet+1)*2, *(ptr_vet+2)*2, *(ptr_vet+3)*2, *(ptr_vet+4)*2, *(ptr_vet+5));
+			printf("\n\nRendimento: Rende %d unidades", vRend*2);
+			printf("\nCusto medio: %.2f reais", vCusto*2);
 			break;
 		}
 	}
@@ -154,7 +166,7 @@ void mostraReceita(int n, int *ptr_vet, char *ptr_receita, char *ptr_passos){
 			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais\n\n", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			printf("Digite metade ou dobro pra descobrir a qntde de ingredientes necessarios de acordo com a tua necessidade de rendimento:\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend, ptr_vet);
+			alteraRendimento(n, str_rend, ptr_vet, vet_rend[i], vet_custo[i]);
 			break;
 		case 2:
 			printf("%s", ptr_receita);
@@ -168,7 +180,7 @@ void mostraReceita(int n, int *ptr_vet, char *ptr_receita, char *ptr_passos){
 			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais\n\n", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			printf("Digite metade ou dobro pra descobrir a qntde de ingredientes necessarios de acordo com a tua necessidade de rendimento:\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend, ptr_vet);
+			alteraRendimento(n, str_rend, ptr_vet, vet_rend[i], vet_custo[i]);
 			break;
 		case 3:
 			printf("%s", ptr_receita);
@@ -182,7 +194,7 @@ void mostraReceita(int n, int *ptr_vet, char *ptr_receita, char *ptr_passos){
 			printf("\nValor p/ venda com porcentagem de lucro dividido por quantidade de rendimento: %.2f reais\n\n", mostraLucro(calculaLucro(vet_custo[i]), vet_rend[i]));
 			printf("Digite metade ou dobro pra descobrir a qntde de ingredientes necessarios de acordo com a tua necessidade de rendimento:\n");
 			scanf(" %s", str_rend);
-			alteraRendimento(n, str_rend, ptr_vet);
+			alteraRendimento(n, str_rend, ptr_vet, vet_rend[i], vet_custo[i]);
 			break;
 	}
 	fclose(txt);
